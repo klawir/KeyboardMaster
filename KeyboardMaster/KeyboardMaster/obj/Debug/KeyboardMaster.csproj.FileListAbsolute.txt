@@ -1,0 +1,10 @@
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.csproj.AssemblyReference.cache
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.Form1.resources
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.Properties.Resources.resources
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.csproj.GenerateResource.cache
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.csproj.CoreCompileInputs.cache
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.exe.config
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.exe
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.pdb
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.exe
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.pdb

@@ -6,26 +6,52 @@ namespace KeyboardMaster
 {
     public partial class Form1 : Form
     {
-        private int _fallingSpeed;
         private Timer _myTimer;
-        private System.Windows.Forms.Label label1;
+        private Label testCharacter;
+
+        private Point startPositionForCharacter;
+        private int _fallingSpeed;
 
         public Form1()
         {
             InitializeComponent();
+            InitializeCustomLoop();
+            InitializeSetupForCharacters();
+        }
 
+        private void InitializeSetupForCharacters()
+        {
+            _fallingSpeed = 1;
+            startPositionForCharacter = new Point(testCharacter.Location.X, testCharacter.Location.Y);
+        }
+
+        private void InitializeCustomLoop()
+        {
             _myTimer = new Timer();
             _myTimer.Tick += CustomLoop;
             _myTimer.Start();
-            _fallingSpeed = 1;
         }
 
         private void CustomLoop(object sender, EventArgs e)
         {
-            Point labelPoint = label1.Location;
-            labelPoint.Y += _fallingSpeed;
-            label1.Location = new Point(labelPoint.X, labelPoint.Y);
+            CharacterFalling();
         }
 
+        private void CharacterFalling()
+        {
+            Point labelPoint = testCharacter.Location;
+            labelPoint.Y += _fallingSpeed;
+            testCharacter.Location = new Point(labelPoint.X, labelPoint.Y);
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            base.OnKeyUp(e);
+
+            if (e.KeyCode == Keys.A)
+            {
+                testCharacter.Location = new Point(startPositionForCharacter.X, startPositionForCharacter.Y);
+            }
+        }
     }
 }

@@ -9,6 +9,13 @@ namespace KeyboardMaster
         private Timer _myTimer;
         private Label testCharacter;
 
+        private Label pointsLabel;
+        private Label pointsValue;
+
+        private Label chancesLabel;
+        private Label chancesValueLabel;
+
+        private Player _player;
         private Point startPositionForCharacter;
         private int _fallingSpeed;
 
@@ -17,11 +24,17 @@ namespace KeyboardMaster
             InitializeComponent();
             InitializeCustomLoop();
             InitializeSetupForCharacters();
+            InitializePlayerData();
+        }
+
+        private void InitializePlayerData()
+        {
+            _player = new Player(pointsValue, chancesValueLabel);
         }
 
         private void InitializeSetupForCharacters()
         {
-            _fallingSpeed = 1;
+            _fallingSpeed = 5;
             startPositionForCharacter = new Point(testCharacter.Location.X, testCharacter.Location.Y);
         }
 
@@ -34,7 +47,16 @@ namespace KeyboardMaster
 
         private void CustomLoop(object sender, EventArgs e)
         {
-            CharacterFalling();
+            if (testCharacter.Location.Y > ClientRectangle.Height - testCharacter.Size.Height)
+            {
+                testCharacter.Location = new Point(startPositionForCharacter.X, startPositionForCharacter.Y);
+                _player.RemoveChance();
+            }
+
+            else
+            {
+                CharacterFalling();
+            }
         }
 
         private void CharacterFalling()
@@ -51,6 +73,7 @@ namespace KeyboardMaster
             if (e.KeyCode == Keys.A)
             {
                 testCharacter.Location = new Point(startPositionForCharacter.X, startPositionForCharacter.Y);
+                _player.AddScore();
             }
         }
     }

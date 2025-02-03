@@ -42,14 +42,14 @@ namespace KeyboardMaster
             this.chancesLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // testCharacter
             // 
             this.testCharacter.AutoSize = true;
-            this.testCharacter.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.testCharacter.Location = new System.Drawing.Point(327, 9);
+            this.testCharacter.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.testCharacter.Location = new System.Drawing.Point(358, -1);
             this.testCharacter.Margin = new System.Windows.Forms.Padding(0);
-            this.testCharacter.Name = "label1";
-            this.testCharacter.Size = new System.Drawing.Size(27, 26);
+            this.testCharacter.Name = "testCharacter";
+            this.testCharacter.Size = new System.Drawing.Size(28, 29);
             this.testCharacter.TabIndex = 0;
             this.testCharacter.Text = "A";
             // 
@@ -81,7 +81,7 @@ namespace KeyboardMaster
             this.chancesValueLabel.Name = "chancesValueLabel";
             this.chancesValueLabel.Size = new System.Drawing.Size(16, 17);
             this.chancesValueLabel.TabIndex = 4;
-            this.chancesValueLabel.Text = "5";
+            this.chancesValueLabel.Text = "4";
             // 
             // chancesLabel
             // 
@@ -97,6 +97,7 @@ namespace KeyboardMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chancesValueLabel);
             this.Controls.Add(this.chancesLabel);
@@ -112,10 +113,6 @@ namespace KeyboardMaster
 
         #endregion
 
-        private Label pointsLabel;
-        private Label pointsValue;
-        private Label chancesValueLabel;
-        private Label chancesLabel;
     }
 }
 

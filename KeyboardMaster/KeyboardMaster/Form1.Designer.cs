@@ -35,23 +35,11 @@ namespace KeyboardMaster
         /// </summary>
         private void InitializeComponent()
         {
-            this.testCharacter = new System.Windows.Forms.Label();
             this.pointsLabel = new System.Windows.Forms.Label();
             this.pointsValue = new System.Windows.Forms.Label();
             this.chancesValueLabel = new System.Windows.Forms.Label();
             this.chancesLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.testCharacter.AutoSize = true;
-            this.testCharacter.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.testCharacter.Location = new System.Drawing.Point(327, 9);
-            this.testCharacter.Margin = new System.Windows.Forms.Padding(0);
-            this.testCharacter.Name = "label1";
-            this.testCharacter.Size = new System.Drawing.Size(27, 26);
-            this.testCharacter.TabIndex = 0;
-            this.testCharacter.Text = "A";
             // 
             // pointsLabel
             // 
@@ -81,7 +69,7 @@ namespace KeyboardMaster
             this.chancesValueLabel.Name = "chancesValueLabel";
             this.chancesValueLabel.Size = new System.Drawing.Size(16, 17);
             this.chancesValueLabel.TabIndex = 4;
-            this.chancesValueLabel.Text = "5";
+            this.chancesValueLabel.Text = "4";
             // 
             // chancesLabel
             // 
@@ -97,12 +85,12 @@ namespace KeyboardMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.chancesValueLabel);
             this.Controls.Add(this.chancesLabel);
             this.Controls.Add(this.pointsValue);
             this.Controls.Add(this.pointsLabel);
-            this.Controls.Add(this.testCharacter);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -112,10 +100,6 @@ namespace KeyboardMaster
 
         #endregion
 
-        private Label pointsLabel;
-        private Label pointsValue;
-        private Label chancesValueLabel;
-        private Label chancesLabel;
     }
 }
 

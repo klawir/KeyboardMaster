@@ -19,6 +19,11 @@ namespace KeyboardMaster
             _chancesValueLabel = chancesValueLabel;
         }
 
+        public bool IsTheEndOfChances()
+        {
+            return _chances == 0;
+        }
+
         public int GetScore()
         {
             return _points;

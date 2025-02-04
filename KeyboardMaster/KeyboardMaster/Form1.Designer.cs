@@ -35,23 +35,11 @@ namespace KeyboardMaster
         /// </summary>
         private void InitializeComponent()
         {
-            this.testCharacter = new System.Windows.Forms.Label();
             this.pointsLabel = new System.Windows.Forms.Label();
             this.pointsValue = new System.Windows.Forms.Label();
             this.chancesValueLabel = new System.Windows.Forms.Label();
             this.chancesLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // testCharacter
-            // 
-            this.testCharacter.AutoSize = true;
-            this.testCharacter.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.testCharacter.Location = new System.Drawing.Point(358, -1);
-            this.testCharacter.Margin = new System.Windows.Forms.Padding(0);
-            this.testCharacter.Name = "testCharacter";
-            this.testCharacter.Size = new System.Drawing.Size(28, 29);
-            this.testCharacter.TabIndex = 0;
-            this.testCharacter.Text = "A";
             // 
             // pointsLabel
             // 
@@ -103,7 +91,6 @@ namespace KeyboardMaster
             this.Controls.Add(this.chancesLabel);
             this.Controls.Add(this.pointsValue);
             this.Controls.Add(this.pointsLabel);
-            this.Controls.Add(this.testCharacter);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace KeyboardMaster
@@ -7,7 +7,6 @@ namespace KeyboardMaster
     public partial class Form1 : Form
     {
         private Timer _myTimer;
-        private Label testCharacter;
 
         private Label pointsLabel;
         private Label pointsValue;
@@ -16,15 +15,20 @@ namespace KeyboardMaster
         private Label chancesValueLabel;
 
         private Player _player;
-        private Point startPositionForCharacter;
+        private List<Character> _characters;
         private int _fallingSpeed;
 
         public Form1()
         {
+            RandomUtility.Initialize();
+
             InitializeComponent();
             InitializeCustomLoop();
             InitializeSetupForCharacters();
             InitializePlayerData();
+
+            _characters = new List<Character>();
+            SpawnCharacter();
         }
 
         private void InitializePlayerData()
@@ -34,8 +38,7 @@ namespace KeyboardMaster
 
         private void InitializeSetupForCharacters()
         {
-            _fallingSpeed = 5;
-            startPositionForCharacter = new Point(testCharacter.Location.X, testCharacter.Location.Y);
+            _fallingSpeed = 1;
         }
 
         private void InitializeCustomLoop()
@@ -47,33 +50,42 @@ namespace KeyboardMaster
 
         private void CustomLoop(object sender, EventArgs e)
         {
-            if (testCharacter.Location.Y > ClientRectangle.Height - testCharacter.Size.Height)
-            {
-                testCharacter.Location = new Point(startPositionForCharacter.X, startPositionForCharacter.Y);
-                _player.RemoveChance();
-            }
+            CharacterFalling();
+        }
 
-            else
-            {
-                CharacterFalling();
-            }
+        private void SpawnCharacter()
+        {
+            Character newCharacter = new Character(this);
+            _characters.Add(newCharacter);
         }
 
         private void CharacterFalling()
         {
-            Point labelPoint = testCharacter.Location;
-            labelPoint.Y += _fallingSpeed;
-            testCharacter.Location = new Point(labelPoint.X, labelPoint.Y);
+            for (int i = 0; i < _characters.Count; i++)
+            {
+                _characters[i].MoveDown(_fallingSpeed);
+
+                if (_characters[i].IsOnBottom(this))
+                {
+                    _characters[i].RestoreRandomPosition(this);
+                    _characters[i].SpawnAsNew();
+                    _player.RemoveChance();
+                }
+            }
         }
 
         protected override void OnKeyUp(KeyEventArgs e)
         {
             base.OnKeyUp(e);
 
-            if (e.KeyCode == Keys.A)
+            foreach (var character in _characters)
             {
-                testCharacter.Location = new Point(startPositionForCharacter.X, startPositionForCharacter.Y);
-                _player.AddScore();
+                if (character.IsTheSameKey(e))
+                {
+                    character.RestoreRandomPosition(this);
+                    character.SpawnAsNew();
+                    _player.AddScore();
+                }
             }
         }
     }

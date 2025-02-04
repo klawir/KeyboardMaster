@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\keyboardmaster\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|solutionrelative:keyboardmaster\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\keyboardmaster\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|solutionrelative:keyboardmaster\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\keyboardmaster\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|solutionrelative:keyboardmaster\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\keyboardmaster\\randomutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|solutionrelative:keyboardmaster\\randomutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|e:\\.net projects\\keyboardmaster\\keyboardmaster\\keyboardmaster\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\keyboardmaster\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|solutionrelative:keyboardmaster\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\keyboardmaster\\randomutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|solutionrelative:keyboardmaster\\randomutility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|e:\\.net projects\\keyboardmaster\\keyboardmaster\\keyboardmaster\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|solutionrelative:keyboardmaster\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\keyboardmaster\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05EF835D-8256-4C97-A363-96217E2A48B4}|KeyboardMaster\\KeyboardMaster.csproj|solutionrelative:keyboardmaster\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,36 +30,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\Form1.cs",
               "RelativeDocumentMoniker": "KeyboardMaster\\Form1.cs",
-              "ToolTip": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\Form1.cs",
-              "RelativeToolTip": "KeyboardMaster\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAkAAAAAAAAAA==",
+              "ToolTip": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\Form1.cs*",
+              "RelativeToolTip": "KeyboardMaster\\Form1.cs*",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-04T16:29:13.669Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "RandomUtility.cs",
               "DocumentMoniker": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\RandomUtility.cs",
               "RelativeDocumentMoniker": "KeyboardMaster\\RandomUtility.cs",
               "ToolTip": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\RandomUtility.cs",
               "RelativeToolTip": "KeyboardMaster\\RandomUtility.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-04T09:08:13.226Z"
+              "WhenOpened": "2025-02-04T09:08:13.226Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Player.cs",
               "DocumentMoniker": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\Player.cs",
               "RelativeDocumentMoniker": "KeyboardMaster\\Player.cs",
@@ -72,25 +73,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Character.cs",
               "DocumentMoniker": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\Character.cs",
               "RelativeDocumentMoniker": "KeyboardMaster\\Character.cs",
               "ToolTip": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\Character.cs",
               "RelativeToolTip": "KeyboardMaster\\Character.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAADsAAABwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-03T19:11:49.661Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\Form1.cs",
               "RelativeDocumentMoniker": "KeyboardMaster\\Form1.cs",
-              "ToolTip": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\Form1.cs [Design]",
-              "RelativeToolTip": "KeyboardMaster\\Form1.cs [Design]",
+              "ToolTip": "E:\\.net projects\\KeyboardMaster\\KeyboardMaster\\KeyboardMaster\\Form1.cs [Design]*",
+              "RelativeToolTip": "KeyboardMaster\\Form1.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-02T15:37:36.244Z",
               "EditorCaption": " [Design]"

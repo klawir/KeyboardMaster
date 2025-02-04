@@ -19,6 +19,11 @@ namespace KeyboardMaster
             _chancesValueLabel = chancesValueLabel;
         }
 
+        public int GetScore()
+        {
+            return _points;
+        }
+
         public void AddScore()
         {
             _points++;

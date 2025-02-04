@@ -18,7 +18,7 @@ namespace KeyboardMaster
             _model.ForeColor = Color.Green;
             _model.Padding = new Padding(6);
             SpawnAsNew();
-            form.Controls.Add(_model);
+             form.Controls.Add(_model);
             RestoreRandomPosition(form);
         }
 

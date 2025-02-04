@@ -17,6 +17,8 @@ namespace KeyboardMaster
         private Player _player;
         private List<Character> _characters;
         private int _fallingSpeed;
+        private const int _EACH_X_POINT_SPAWNS_ADDITIONAL_CHARACTER = 20;
+        private const int _EACH_Y_POINT_INCREASES_FALLING_SPEED = 15;
 
         public Form1()
         {
@@ -26,10 +28,9 @@ namespace KeyboardMaster
             InitializeCustomLoop();
             InitializeSetupForCharacters();
             InitializePlayerData();
-
-            _characters = new List<Character>();
             SpawnCharacter();
         }
+
 
         private void InitializePlayerData()
         {
@@ -38,6 +39,7 @@ namespace KeyboardMaster
 
         private void InitializeSetupForCharacters()
         {
+            _characters = new List<Character>();
             _fallingSpeed = 1;
         }
 
@@ -85,6 +87,18 @@ namespace KeyboardMaster
                     character.RestoreRandomPosition(this);
                     character.SpawnAsNew();
                     _player.AddScore();
+
+                    if (_player.GetScore() % _EACH_X_POINT_SPAWNS_ADDITIONAL_CHARACTER == 0)
+                    {
+                        SpawnCharacter();
+                        return;
+                    }
+
+                    if (_player.GetScore() % _EACH_Y_POINT_INCREASES_FALLING_SPEED == 0)
+                    {
+                        _fallingSpeed++;
+                        return;
+                    }
                 }
             }
         }

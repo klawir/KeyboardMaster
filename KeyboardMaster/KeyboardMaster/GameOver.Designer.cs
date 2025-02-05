@@ -77,6 +77,7 @@
             this._okButton.TabIndex = 4;
             this._okButton.Text = "ok";
             this._okButton.UseVisualStyleBackColor = true;
+            this._okButton.Click += new System.EventHandler(this._okButton_Click);
             // 
             // GameOver
             // 

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace KeyboardMaster
 {
-    public partial class Form1 : Form
+    public partial class Game : Form
     {
+        public static Game Instance { get; private set; }
         private Timer _loopTick;
 
         private Label pointsLabel;
@@ -19,7 +21,7 @@ namespace KeyboardMaster
         private List<Character> _characters;
         private int _fallingSpeed;
 
-        public Form1()
+        public Game()
         {
             RandomUtility.Initialize();
 
@@ -28,8 +30,26 @@ namespace KeyboardMaster
             InitializeSetupForCharacters();
             InitializePlayerData();
             SpawnCharacter();
+            Instance = this;
+
+            Location = new System.Drawing.Point(
+                (ScreenUtility.GetWidth(this) / 2) - (ClientRectangle.Width / 2),
+            (ScreenUtility.GetHeight(this) / 2) - (ClientRectangle.Height / 2));
         }
 
+        public void Restart()
+        {
+            foreach (var item in _characters)
+            {
+                item.Delete(Controls);
+            }
+
+            InitializeSetupForCharacters();
+            InitializePlayerData();
+            SpawnCharacter();
+            _loopTick.Start();
+            Show();
+        }
 
         private void InitializePlayerData()
         {
@@ -75,18 +95,21 @@ namespace KeyboardMaster
                     bool isGameOver = _player.IsTheEndOfChances();
                     if (isGameOver)
                     {
-                        GameOver gameOverPopup = new GameOver();
-                        gameOverPopup.Show();
-                        gameOverPopup.InitializeScore(_player);
-
-                        gameOverPopup.Location = new System.Drawing.Point(
-                            ClientRectangle.Location.X + ClientRectangle.Width,
-                            ClientRectangle.Y / 2 + ClientRectangle.Height / 2);
-
-                        _loopTick.Stop();
+                        CallGameOver();
                     }
                 }
             }
+        }
+
+        private void CallGameOver()
+        {
+            if (GameOver.Instance == null)
+            {
+                GameOver gameOverPopup = new GameOver();
+            }
+
+            GameOver.Instance.Restart(_player);
+            _loopTick.Stop();
         }
 
         protected override void OnKeyUp(KeyEventArgs e)

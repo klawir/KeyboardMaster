@@ -17,6 +17,9 @@ namespace KeyboardMaster
 
             _pointsValue = pointsValue;
             _chancesValueLabel = chancesValueLabel;
+
+            UpdateChance();
+            UpdatePoints();
         }
 
         public bool IsTheEndOfChances()

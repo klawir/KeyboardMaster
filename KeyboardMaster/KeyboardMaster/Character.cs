@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace KeyboardMaster
@@ -9,7 +10,7 @@ namespace KeyboardMaster
         private Point _position;
         private Keys _key;
 
-        public Character(Form1 form)
+        public Character(Game form)
         {
             _model = new Label();
             _model.Location = new Point(RandomUtility.Random(100, form.ClientRectangle.Width), 0);
@@ -50,15 +51,20 @@ namespace KeyboardMaster
             return _key == e.KeyCode;
         }
 
-        internal bool IsOnBottom(Form1 form)
+        internal bool IsOnBottom(Game form)
         {
             return _position.Y > form.ClientRectangle.Height - _model.Size.Height;
         }
 
-        internal void RestoreRandomPosition(Form1 form)
+        internal void RestoreRandomPosition(Game form)
         {
             _position = new Point(RandomUtility.Random(100, form.ClientRectangle.Width - _model.Size.Width), 0);
             _model.Location = new Point(_position.X, _position.Y);
+        }
+
+        internal void Delete(Control.ControlCollection controls)
+        {
+            controls.Remove(_model);
         }
     }
 }

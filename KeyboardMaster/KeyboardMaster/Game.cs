@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace KeyboardMaster
@@ -59,7 +58,7 @@ namespace KeyboardMaster
         private void InitializeSetupForCharacters()
         {
             _characters = new List<Character>();
-            _fallingSpeed = 1;
+            _fallingSpeed = 10;
         }
 
         private void InitializeCustomLoop()

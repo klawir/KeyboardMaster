@@ -1,8 +1,10 @@
 # KeyboardMaster (symbolic repository)
 
 ## PC, Windows
+<br>
 
-### My job mainly involved programming the features:
+> [!IMPORTANT]
+> ### My job mainly involved programming the features:
 
 * Creating characters
 * Falling of characters

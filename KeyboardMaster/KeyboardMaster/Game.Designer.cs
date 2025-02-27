@@ -2,7 +2,7 @@
 
 namespace KeyboardMaster
 {
-    partial class Form1
+    partial class Game
     {
         /// <summary>
         /// Required designer variable.
@@ -81,7 +81,7 @@ namespace KeyboardMaster
             this.chancesLabel.TabIndex = 3;
             this.chancesLabel.Text = "Chances";
             // 
-            // Form1
+            // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,15 +91,15 @@ namespace KeyboardMaster
             this.Controls.Add(this.chancesLabel);
             this.Controls.Add(this.pointsValue);
             this.Controls.Add(this.pointsLabel);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Game";
+            this.Text = "Keyboard master";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
     }
 }
 

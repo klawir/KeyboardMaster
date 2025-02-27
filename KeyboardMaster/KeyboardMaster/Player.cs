@@ -12,11 +12,19 @@ namespace KeyboardMaster
 
         public Player(Label pointsValue, Label chancesValueLabel)
         {
-            _chances = 4;
+            _chances = 1;
             _points = 0;
 
             _pointsValue = pointsValue;
             _chancesValueLabel = chancesValueLabel;
+
+            UpdateChance();
+            UpdatePoints();
+        }
+
+        public bool IsTheEndOfChances()
+        {
+            return _chances == 0;
         }
 
         public int GetScore()

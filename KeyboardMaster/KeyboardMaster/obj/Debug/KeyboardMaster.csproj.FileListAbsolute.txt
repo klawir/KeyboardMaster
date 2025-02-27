@@ -2,7 +2,9 @@ E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\Keyboard
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.exe
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.pdb
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.csproj.AssemblyReference.cache
-E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.Form1.resources
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.Game.resources
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.GameOver.resources
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.MainMenu.resources
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.Properties.Resources.resources
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.csproj.GenerateResource.cache
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.csproj.CoreCompileInputs.cache

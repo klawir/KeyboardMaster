@@ -10,10 +10,11 @@ namespace KeyboardMaster
         {
             InitializeComponent();
             Instance = this;
-
             Location = new System.Drawing.Point(
                 (ScreenUtility.GetWidth(this) / 2) - (ClientRectangle.Width / 2),
             (ScreenUtility.GetHeight(this) / 2) - (ClientRectangle.Height / 2));
+
+            DataBaseControler.Initialize();
         }
 
         private void _newGameButton_Click(object sender, System.EventArgs e)
@@ -30,6 +31,30 @@ namespace KeyboardMaster
         private void _exitButton_Click(object sender, System.EventArgs e)
         {
             Close();
+        }
+
+        private void _scoreButton_Click(object sender, System.EventArgs e)
+        {
+            if (ScorePopup.Instance == null)
+            {
+                ScorePopup scorePopup = new ScorePopup();
+            }
+
+            ScorePopup.Instance.Restart();
+        }
+
+        private void _okButton_Click(object sender, System.EventArgs e)
+        {
+            DataBaseControler.InitializeConnection(
+                "Server=" + connectionStringTextBox.Text +";"+
+                "Database=Scores;" +
+                "Trusted_Connection=True;");
+
+            dataBaseConnectionStatusLabel.Text = "Connected to a data base";
+
+            connectionStringTextBox.Visible = false;
+            enterDataBaseAddressLabel.Visible = false;
+            okButton.Visible = false;
         }
     }
 }

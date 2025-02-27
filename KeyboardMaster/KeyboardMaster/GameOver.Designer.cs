@@ -31,7 +31,7 @@
             this._scoreeLabel = new System.Windows.Forms.Label();
             this._scoreValueLabel = new System.Windows.Forms.Label();
             this._nickNameLabel = new System.Windows.Forms.Label();
-            this.textBox = new System.Windows.Forms.TextBox();
+            this.nickTextBox = new System.Windows.Forms.TextBox();
             this._okButton = new System.Windows.Forms.Button();
             this.scoreListView = new System.Windows.Forms.ListView();
             this.playerColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -65,12 +65,12 @@
             this._nickNameLabel.TabIndex = 2;
             this._nickNameLabel.Text = "Enter nick name";
             // 
-            // textBox
+            // nickTextBox
             // 
-            this.textBox.Location = new System.Drawing.Point(167, 302);
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(100, 20);
-            this.textBox.TabIndex = 3;
+            this.nickTextBox.Location = new System.Drawing.Point(167, 302);
+            this.nickTextBox.Name = "nickTextBox";
+            this.nickTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nickTextBox.TabIndex = 3;
             // 
             // _okButton
             // 
@@ -110,7 +110,7 @@
             this.ClientSize = new System.Drawing.Size(494, 368);
             this.Controls.Add(this.scoreListView);
             this.Controls.Add(this._okButton);
-            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.nickTextBox);
             this.Controls.Add(this._nickNameLabel);
             this.Controls.Add(this._scoreValueLabel);
             this.Controls.Add(this._scoreeLabel);
@@ -126,7 +126,7 @@
         private System.Windows.Forms.Label _scoreeLabel;
         private System.Windows.Forms.Label _scoreValueLabel;
         private System.Windows.Forms.Label _nickNameLabel;
-        private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.TextBox nickTextBox;
         private System.Windows.Forms.Button _okButton;
         private System.Windows.Forms.ListView scoreListView;
         private System.Windows.Forms.ColumnHeader playerColumnHeader;

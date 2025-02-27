@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
+    <Compile Include="CharacterUtility.cs" />
+    <Compile Include="DataBaseControler.cs" />
     <Compile Include="DifficultLevel.cs" />
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
@@ -67,9 +69,16 @@
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtility.cs" />
+    <Compile Include="ScorePopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScorePopup.Designer.cs">
+      <DependentUpon>ScorePopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScreenUtility.cs" />
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
@@ -89,6 +98,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ScorePopup.resx">
+      <DependentUpon>ScorePopup.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

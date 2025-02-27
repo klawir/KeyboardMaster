@@ -1,6 +1,4 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace KeyboardMaster
 {
@@ -23,12 +21,12 @@ namespace KeyboardMaster
             _scoreValueLabel.Text = playerData.GetScore().ToString();
         }
 
-        internal void Restart(Player player)
+        internal void Restart(Player player, System.Collections.Generic.List<PlayerData> playerDataBase)
         {
             scoreListView.Items.Clear();
-            LoadScoresFromDatabase();
 
-            textBox.Text = string.Empty;
+            nickTextBox.Text = string.Empty;
+            LoadScoresFromDatabase(playerDataBase);
             Show();
             InitializeScore(player);
 
@@ -39,48 +37,31 @@ namespace KeyboardMaster
             TopMost = true;
         }
 
-        private void LoadScoresFromDatabase()
+        private void LoadScoresFromDatabase(System.Collections.Generic.List<PlayerData> playerDataBase)
         {
-            SqlConnection connection = new SqlConnection("Server=DESKTOP-NT2DSL5\\SQLEXPRESS;Database=Scores;Trusted_Connection=True;");
-            string oString = "Select Player,Value from Scores";
-            SqlCommand oCmd = new SqlCommand(oString, connection);
-            connection.Open();
-
-            using (SqlDataReader oReader = oCmd.ExecuteReader())
+            ListViewItem listViewItem = new ListViewItem();
+            foreach (PlayerData playerData in playerDataBase)
             {
-                while (oReader.Read())
-                {
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Text = oReader["Player"].ToString();
-                    lvi.SubItems.Add(oReader["Value"].ToString());
-                    scoreListView.Items.Add(lvi);
-                }
-
-                scoreListView.EndUpdate();
-                connection.Close();
+                listViewItem = new ListViewItem();
+                listViewItem.Text = playerData.Nick;
+                listViewItem.SubItems.Add(playerData.Scores);
+                scoreListView.Items.Add(listViewItem);
             }
+
+            scoreListView.EndUpdate();
         }
 
         private void _okButton_Click(object sender, System.EventArgs e)
         {
             SaveToDataBase();
             Game.Instance.Hide();
-            GameOver.Instance.Hide();
+            Hide();
             MainMenu.Instance.Show();
         }
 
         private void SaveToDataBase()
         {
-            SqlConnection connection = new SqlConnection("Server=DESKTOP-NT2DSL5\\SQLEXPRESS;Database=Scores;Trusted_Connection=True;");
-
-            string querySql = "INSERT INTO Scores (Player, Value) values (@Player, @Value)";
-            connection.Open();
-            SqlCommand queryExecution = new SqlCommand(querySql, connection);
-            queryExecution.Parameters.Add("@Player", SqlDbType.VarChar);
-            queryExecution.Parameters["@Player"].Value = textBox.Text;
-            queryExecution.Parameters.Add("@Value", SqlDbType.Int);
-            queryExecution.Parameters["@Value"].Value = int.Parse(_scoreValueLabel.Text);
-            queryExecution.ExecuteNonQuery();
+            DataBaseControler.SaveScores(nickTextBox, _scoreValueLabel);
         }
     }
 }

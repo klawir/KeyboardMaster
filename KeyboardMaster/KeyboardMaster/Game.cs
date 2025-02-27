@@ -23,6 +23,8 @@ namespace KeyboardMaster
         public Game()
         {
             RandomUtility.Initialize();
+            ScreenUtility.Initialize();
+            CharacterUtility.Initialize(65, 91);
 
             InitializeComponent();
             InitializeCustomLoop();
@@ -50,6 +52,35 @@ namespace KeyboardMaster
             Show();
         }
 
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            base.OnKeyUp(e);
+
+            int score;
+            foreach (Character character in _characters)
+            {
+                if (character.IsTheSameKey(e))
+                {
+                    character.RestoreRandomPosition(this);
+                    character.GetNewRandomValue();
+                    _player.AddScore();
+                    score = _player.GetScore();
+
+                    if (_passiveDifficultLevel.TryAddCharacter(score))
+                    {
+                        SpawnCharacter();
+                        return;
+                    }
+
+                    if (_passiveDifficultLevel.TryIncreaseFallingSpeed(score))
+                    {
+                        _fallingSpeed++;
+                        return;
+                    }
+                }
+            }
+        }
+
         private void InitializePlayerData()
         {
             _player = new Player(pointsValue, chancesValueLabel);
@@ -58,7 +89,12 @@ namespace KeyboardMaster
         private void InitializeSetupForCharacters()
         {
             _characters = new List<Character>();
-            _fallingSpeed = 10;
+            InitializeCharacterDefaultSpeed();
+        }
+
+        private void InitializeCharacterDefaultSpeed()
+        {
+            _fallingSpeed = 1;
         }
 
         private void InitializeCustomLoop()
@@ -87,8 +123,7 @@ namespace KeyboardMaster
 
                 if (_characters[i].IsOnBottom(this))
                 {
-                    _characters[i].RestoreRandomPosition(this);
-                    _characters[i].SpawnAsNew();
+                    _characters[i].Spawn(this);
                     _player.RemoveChance();
 
                     bool isGameOver = _player.IsTheEndOfChances();
@@ -107,37 +142,19 @@ namespace KeyboardMaster
                 GameOver gameOverPopup = new GameOver();
             }
 
-            GameOver.Instance.Restart(_player);
             _loopTick.Stop();
-        }
+            var playerDataBase = DataBaseControler.LoadScores();
+            bool noConnactedToDataBase = playerDataBase.Count == 0;
 
-        protected override void OnKeyUp(KeyEventArgs e)
-        {
-            base.OnKeyUp(e);
-
-            int score;
-            foreach (var character in _characters)
+            if (noConnactedToDataBase)
             {
-                if (character.IsTheSameKey(e))
-                {
-                    character.RestoreRandomPosition(this);
-                    character.SpawnAsNew();
-                    _player.AddScore();
-                    score = _player.GetScore();
+                Hide();
+                MainMenu.Instance.Show();
 
-                    if (_passiveDifficultLevel.TryAddCharacter(score))
-                    {
-                        SpawnCharacter();
-                        return;
-                    }
-
-                    if (_passiveDifficultLevel.TryIncreaseFallingSpeed(score))
-                    {
-                        _fallingSpeed++;
-                        return;
-                    }
-                }
+                return;
             }
+
+            GameOver.Instance.Restart(_player, playerDataBase);
         }
     }
 }

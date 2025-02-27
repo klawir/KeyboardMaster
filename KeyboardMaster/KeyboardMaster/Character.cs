@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace KeyboardMaster
@@ -9,21 +8,25 @@ namespace KeyboardMaster
         private Label _model;
         private Point _position;
         private Keys _key;
+        private int _fontSize;
 
         public Character(Game form)
         {
             _model = new Label();
-            _model.Location = new Point(RandomUtility.Random(100, form.ClientRectangle.Width), 0);
+            _model.Location = new Point(
+                RandomUtility.Random(ScreenUtility.MinWidthAvailableForContent,
+                    form.ClientRectangle.Width), 0);
+
+            _fontSize = 18;
             _model.AutoSize = true;
-            _model.Font = new Font("Calibri", 18);
+            _model.Font = new Font("Calibri", _fontSize);
             _model.ForeColor = Color.Green;
-            _model.Padding = new Padding(6);
-            SpawnAsNew();
              form.Controls.Add(_model);
+            GetNewRandomValue();
             RestoreRandomPosition(form);
         }
 
-        public void SpawnAsNew()
+        public void GetNewRandomValue()
         {
             RandomKey();
             SetValue();
@@ -31,7 +34,7 @@ namespace KeyboardMaster
 
         private void RandomKey()
         {
-            _key = (Keys)RandomUtility.Random(65, 91);
+            _key = CharacterUtility.RandomLetter();
         }
 
         private void SetValue()
@@ -58,13 +61,23 @@ namespace KeyboardMaster
 
         internal void RestoreRandomPosition(Game form)
         {
-            _position = new Point(RandomUtility.Random(100, form.ClientRectangle.Width - _model.Size.Width), 0);
+            _position = new Point(
+                RandomUtility.Random(
+                    ScreenUtility.MinWidthAvailableForContent,
+                    form.ClientRectangle.Width - _model.Size.Width), 0);
+
             _model.Location = new Point(_position.X, _position.Y);
         }
 
         internal void Delete(Control.ControlCollection controls)
         {
             controls.Remove(_model);
+        }
+
+        internal void Spawn(Game game)
+        {
+            RestoreRandomPosition(game);
+            GetNewRandomValue();
         }
     }
 }

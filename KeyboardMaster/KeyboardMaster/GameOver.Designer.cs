@@ -115,7 +115,7 @@
             this.Controls.Add(this._scoreValueLabel);
             this.Controls.Add(this._scoreeLabel);
             this.Name = "GameOver";
-            this.Text = "GameOver";
+            this.Text = "Game over";
             this.ResumeLayout(false);
             this.PerformLayout();
 

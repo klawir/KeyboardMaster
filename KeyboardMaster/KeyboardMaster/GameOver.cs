@@ -24,7 +24,6 @@ namespace KeyboardMaster
         internal void Restart(Player player, System.Collections.Generic.List<PlayerData> playerDataBase)
         {
             scoreListView.Items.Clear();
-
             nickTextBox.Text = string.Empty;
             LoadScoresFromDatabase(playerDataBase);
             Show();

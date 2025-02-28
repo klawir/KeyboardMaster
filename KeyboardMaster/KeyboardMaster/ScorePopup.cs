@@ -22,6 +22,18 @@ namespace KeyboardMaster
 
         internal void Restart()
         {
+            if (DataBaseControler.IsServerAddressEmpty())
+            {
+                MessageBox.Show("Enter data base address");
+                return;
+            }
+
+            if (!DataBaseControler.Connected)
+            {
+                MessageBox.Show("No connection to data base");
+                return;
+            }
+
             scoreListView.Items.Clear();
             var playerDataBase = DataBaseControler.LoadScores();
             bool noConnactedToDataBase = playerDataBase.Count == 0;

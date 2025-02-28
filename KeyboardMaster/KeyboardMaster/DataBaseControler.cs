@@ -1,42 +1,82 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KeyboardMaster
 {
-    internal class DataBaseControler
+    public class DataBaseControler
     {
         private static SqlConnection _connection;
         private static SqlCommand _sqlCommand;
         private static string _querySql;
         private static string _connectionString;
 
+        public static float ConnectionTimeout { get; private set; }
+        public static bool Connected { get; private set; }
+
         public static void Initialize()
         {
+            _connection = new SqlConnection(_connectionString);
             _connectionString = string.Empty;
         }
 
         public static void InitializeConnection(string connectionString)
         {
             _connectionString = connectionString;
-            _connection = new SqlConnection(connectionString);
         }
 
-        public static List<PlayerData> LoadScores()
+        public static bool CanConnectToDatabase()
+        {
+            _connection = new SqlConnection(_connectionString);
+            ConnectionTimeout = _connection.ConnectionTimeout;
+
+            try
+            {
+                using (_connection = new SqlConnection(_connectionString))
+                {
+                    _connection.Open();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cannot connect to data base");
+                _connection.Close();
+                Connected = false;
+
+                return false;
+            }
+
+            _connection.Close();
+            Connected = true;
+
+            return true;
+        }
+
+        public static bool IsServerAddressEmpty()
+        {
+            bool noEnteredServerAddress = string.IsNullOrEmpty(_connectionString);
+
+            if (noEnteredServerAddress)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        internal static List<PlayerData> LoadScores()
         {
             List<PlayerData> playerData = new List<PlayerData>();
-            bool hasEnteredServerAddress = string.IsNullOrEmpty(_connectionString);
-
-            if (hasEnteredServerAddress)
-            {
-                MessageBox.Show("No connected to a data base");
-                return playerData;
-            }
+            
+            _connection = new SqlConnection(_connectionString);
+            _connection.Open();
 
             _querySql = "Select Player,Value from Scores";
             _sqlCommand = new SqlCommand(_querySql, _connection);
-            _connection.Open();
 
             SqlDataReader oReader;
             SqlDataAdapter adapter;
@@ -46,6 +86,7 @@ namespace KeyboardMaster
                 while (oReader.Read())
                 {
                     adapter = new SqlDataAdapter();
+
                     playerData.Add(new PlayerData(
                     oReader["Player"].ToString(),
                     oReader["Value"].ToString()

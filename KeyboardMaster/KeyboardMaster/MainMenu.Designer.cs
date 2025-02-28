@@ -33,7 +33,6 @@
             this._exitButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
             this.connectionStringTextBox = new System.Windows.Forms.TextBox();
-            this.enterDataBaseAddressLabel = new System.Windows.Forms.Label();
             this.dataBaseConnectionStatusLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -69,7 +68,7 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(203, 193);
+            this.okButton.Location = new System.Drawing.Point(112, 198);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(46, 23);
             this.okButton.TabIndex = 7;
@@ -79,20 +78,13 @@
             // 
             // connectionStringTextBox
             // 
+            this.connectionStringTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.connectionStringTextBox.Location = new System.Drawing.Point(12, 168);
             this.connectionStringTextBox.Multiline = true;
             this.connectionStringTextBox.Name = "connectionStringTextBox";
             this.connectionStringTextBox.Size = new System.Drawing.Size(237, 24);
             this.connectionStringTextBox.TabIndex = 6;
-            // 
-            // enterDataBaseAddressLabel
-            // 
-            this.enterDataBaseAddressLabel.AutoSize = true;
-            this.enterDataBaseAddressLabel.Location = new System.Drawing.Point(36, 198);
-            this.enterDataBaseAddressLabel.Name = "enterDataBaseAddressLabel";
-            this.enterDataBaseAddressLabel.Size = new System.Drawing.Size(122, 13);
-            this.enterDataBaseAddressLabel.TabIndex = 5;
-            this.enterDataBaseAddressLabel.Text = "Enter data base address";
+            this.connectionStringTextBox.Text = "Enter local data base name here";
             // 
             // dataBaseConnectionStatusLabel
             // 
@@ -111,12 +103,11 @@
             this.Controls.Add(this.dataBaseConnectionStatusLabel);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.connectionStringTextBox);
-            this.Controls.Add(this.enterDataBaseAddressLabel);
             this.Controls.Add(this._exitButton);
             this.Controls.Add(this._scoreButton);
             this.Controls.Add(this._newGameButton);
             this.Name = "MainMenu";
-            this.Text = "MainMenu";
+            this.Text = "Main menu";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,7 +120,6 @@
         private System.Windows.Forms.Button _exitButton;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.TextBox connectionStringTextBox;
-        private System.Windows.Forms.Label enterDataBaseAddressLabel;
         private System.Windows.Forms.Label dataBaseConnectionStatusLabel;
     }
 }

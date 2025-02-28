@@ -94,7 +94,7 @@ namespace KeyboardMaster
 
         private void InitializeCharacterDefaultSpeed()
         {
-            _fallingSpeed = 1;
+            _fallingSpeed = 10;
         }
 
         private void InitializeCustomLoop()
@@ -137,23 +137,15 @@ namespace KeyboardMaster
 
         private void CallGameOver()
         {
-            if (GameOver.Instance == null)
-            {
-                GameOver gameOverPopup = new GameOver();
-            }
-
             _loopTick.Stop();
-            var playerDataBase = DataBaseControler.LoadScores();
-            bool noConnactedToDataBase = playerDataBase.Count == 0;
 
-            if (noConnactedToDataBase)
+            if (!DataBaseControler.Connected)
             {
-                Hide();
-                MainMenu.Instance.Show();
-
+                GameOverOfflineMode.Instance.Show();
                 return;
             }
 
+            var playerDataBase = DataBaseControler.LoadScores();
             GameOver.Instance.Restart(_player, playerDataBase);
         }
     }

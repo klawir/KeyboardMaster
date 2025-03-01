@@ -1,4 +1,4 @@
-# KeyboardMaster (symbolic repository)
+# KeyboardMaster
 
 ## PC, Windows
 <br>

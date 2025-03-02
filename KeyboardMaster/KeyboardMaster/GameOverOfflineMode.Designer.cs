@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._scoreeLabel = new System.Windows.Forms.Label();
+            this._scoreLabel = new System.Windows.Forms.Label();
             this.scoreValueLabel = new System.Windows.Forms.Label();
             this.dataBaseConnectionStatusLabel = new System.Windows.Forms.Label();
             this.backToMainMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // _scoreeLabel
+            // _scoreLabel
             // 
-            this._scoreeLabel.AutoSize = true;
-            this._scoreeLabel.Location = new System.Drawing.Point(103, 71);
-            this._scoreeLabel.Name = "_scoreeLabel";
-            this._scoreeLabel.Size = new System.Drawing.Size(35, 13);
-            this._scoreeLabel.TabIndex = 2;
-            this._scoreeLabel.Text = "Score";
+            this._scoreLabel.AutoSize = true;
+            this._scoreLabel.Location = new System.Drawing.Point(103, 71);
+            this._scoreLabel.Name = "_scoreLabel";
+            this._scoreLabel.Size = new System.Drawing.Size(35, 13);
+            this._scoreLabel.TabIndex = 2;
+            this._scoreLabel.Text = "Score";
             // 
             // scoreValueLabel
             // 
@@ -79,7 +79,7 @@
             this.Controls.Add(this.backToMainMenu);
             this.Controls.Add(this.dataBaseConnectionStatusLabel);
             this.Controls.Add(this.scoreValueLabel);
-            this.Controls.Add(this._scoreeLabel);
+            this.Controls.Add(this._scoreLabel);
             this.Name = "GameOverOfflineMode";
             this.Text = "Game over";
             this.ResumeLayout(false);
@@ -89,7 +89,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label _scoreeLabel;
+        private System.Windows.Forms.Label _scoreLabel;
         private System.Windows.Forms.Label scoreValueLabel;
         private System.Windows.Forms.Label dataBaseConnectionStatusLabel;
         private System.Windows.Forms.Button backToMainMenu;

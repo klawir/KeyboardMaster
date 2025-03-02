@@ -5,25 +5,27 @@ namespace KeyboardMaster
 {
     public class Character
     {
-        private Label _model;
         private Point _position;
         private Keys _key;
         private int _fontSize;
 
+        public Label Model { get; set; }
+
         public Character(Game form)
         {
-            _model = new Label();
-            _model.Location = new Point(
+            int windowWidth = form.ClientRectangle.Width;
+            Model = new Label();
+            Model.Location = new Point(
                 RandomUtility.Random(ScreenUtility.MinWidthAvailableForContent,
-                    form.ClientRectangle.Width), 0);
+                    windowWidth), 0);
 
             _fontSize = 18;
-            _model.AutoSize = true;
-            _model.Font = new Font("Calibri", _fontSize);
-            _model.ForeColor = Color.Green;
-             form.Controls.Add(_model);
+            Model.AutoSize = true;
+            Model.Font = new Font("Calibri", _fontSize);
+            Model.ForeColor = Color.Green;
+            form.Controls.Add(Model);
             GetNewRandomValue();
-            RestoreRandomPosition(form);
+            RandomPosition(windowWidth);
         }
 
         public void GetNewRandomValue()
@@ -39,44 +41,39 @@ namespace KeyboardMaster
 
         private void SetValue()
         {
-            _model.Text = _key.ToString();
+            Model.Text = _key.ToString();
         }
 
         public void MoveDown(int fallingSpeed)
         {
-            _position = _model.Location;
+            _position = Model.Location;
             _position.Y += fallingSpeed;
-            _model.Location = new Point(_position.X, _position.Y);
+            Model.Location = new Point(_position.X, _position.Y);
         }
 
-        public bool IsTheSameKey(KeyEventArgs e)
+        public bool HasTheSameKey(KeyEventArgs e)
         {
             return _key == e.KeyCode;
         }
 
-        internal bool IsOnBottom(Game form)
+        internal bool IsOnBottom(int windowHeight)
         {
-            return _position.Y > form.ClientRectangle.Height - _model.Size.Height;
+            return _position.Y > windowHeight - Model.Size.Height;
         }
 
-        internal void RestoreRandomPosition(Game form)
+        internal void RandomPosition(int windowWidth)
         {
             _position = new Point(
                 RandomUtility.Random(
                     ScreenUtility.MinWidthAvailableForContent,
-                    form.ClientRectangle.Width - _model.Size.Width), 0);
+                    windowWidth - Model.Size.Width), 0);
 
-            _model.Location = new Point(_position.X, _position.Y);
+            Model.Location = new Point(_position.X, _position.Y);
         }
 
-        internal void Delete(Control.ControlCollection controls)
+        internal void Spawn(int windowWidth)
         {
-            controls.Remove(_model);
-        }
-
-        internal void Spawn(Game game)
-        {
-            RestoreRandomPosition(game);
+            RandomPosition(windowWidth);
             GetNewRandomValue();
         }
     }

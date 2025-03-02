@@ -8,6 +8,7 @@ namespace KeyboardMaster
     {
         public static Game Instance { get; private set; }
         private Timer _loopTick;
+        private uint _loopCounter;
 
         private Label pointsLabel;
         private Label pointsValue;
@@ -20,36 +21,24 @@ namespace KeyboardMaster
         private List<Character> _characters;
         private int _fallingSpeed;
 
+        private int windowHeight;
+        private int windowWidth;
+
         public Game()
         {
-            RandomUtility.Initialize();
-            ScreenUtility.Initialize();
-            CharacterUtility.Initialize(65, 91);
-
+            InitalizeUtilities();
             InitializeComponent();
-            InitializeCustomLoop();
+            InitializePlayer();
+            InitializeGameLoop();
             InitializeSetupForCharacters();
-            InitializePlayerData();
             SpawnCharacter();
-            Instance = this;
+            InitializeSingleton();
+            SetPositionToMiddleOfTheScreen();
 
-            Location = new System.Drawing.Point(
-                (ScreenUtility.GetWidth(this) / 2) - (ClientRectangle.Width / 2),
-            (ScreenUtility.GetHeight(this) / 2) - (ClientRectangle.Height / 2));
-        }
+            GameLoopTickRun();
 
-        public void Restart()
-        {
-            foreach (var item in _characters)
-            {
-                item.Delete(Controls);
-            }
-
-            InitializeSetupForCharacters();
-            InitializePlayerData();
-            SpawnCharacter();
-            _loopTick.Start();
-            Show();
+            windowHeight = ClientRectangle.Height;
+            windowWidth = ClientRectangle.Width;
         }
 
         protected override void OnKeyUp(KeyEventArgs e)
@@ -59,20 +48,15 @@ namespace KeyboardMaster
             int score;
             foreach (Character character in _characters)
             {
-                if (character.IsTheSameKey(e))
+                if (character.HasTheSameKey(e))
                 {
-                    character.RestoreRandomPosition(this);
+                    character.RandomPosition(windowWidth);
                     character.GetNewRandomValue();
                     _player.AddScore();
+                    UpdateLabelPlayerPoints();
                     score = _player.GetScore();
 
-                    if (_passiveDifficultLevel.TryAddCharacter(score))
-                    {
-                        SpawnCharacter();
-                        return;
-                    }
-
-                    if (_passiveDifficultLevel.TryIncreaseFallingSpeed(score))
+                    if (_passiveDifficultLevel.CanIncreaseFallingSpeed(score))
                     {
                         _fallingSpeed++;
                         return;
@@ -81,11 +65,70 @@ namespace KeyboardMaster
             }
         }
 
-        private void InitializePlayerData()
+        public void Restart()
         {
-            _player = new Player(pointsValue, chancesValueLabel);
+            DeleteAllCharacters();
+            InitializeSetupForCharacters();
+            InitializePlayer();
+            SpawnCharacter();
+            GameLoopTickRun();
+            Show();
         }
 
+        private void GameLoopTickRun()
+        {
+            _loopTick.Start();
+        }
+
+        private void GameLoopTickStop()
+        {
+            _loopTick.Stop();
+        }
+
+        private void InitalizeUtilities()
+        {
+            RandomUtility.Initialize();
+            ScreenUtility.Initialize();
+            CharacterUtility.Initialize(65, 91);
+        }
+
+        private void SetPositionToMiddleOfTheScreen()
+        {
+            Location = new System.Drawing.Point(
+                (ScreenUtility.GetWidth(this) / 2) - (ClientRectangle.Width / 2),
+                (ScreenUtility.GetHeight(this) / 2) - (ClientRectangle.Height / 2));
+        }
+
+        private void InitializeSingleton()
+        {
+            Instance = this;
+        }
+
+        private void InitializeGameLoop()
+        {
+            _loopCounter = 0;
+            _loopTick = new Timer();
+            _loopTick.Tick += GameLoopTick;
+        }
+
+        private void InitializePlayer()
+        {
+            _player = new Player();
+            _player.Initialize();
+            UpdateLabelPlayerChance();
+            UpdateLabelPlayerPoints();
+        }
+
+        private void UpdateLabelPlayerChance()
+        {
+            chancesValueLabel.Text = _player.Chances.ToString();
+        }
+
+        private void UpdateLabelPlayerPoints()
+        {
+            pointsValue.Text = _player.Points.ToString();
+        }
+        
         private void InitializeSetupForCharacters()
         {
             _characters = new List<Character>();
@@ -94,19 +137,21 @@ namespace KeyboardMaster
 
         private void InitializeCharacterDefaultSpeed()
         {
-            _fallingSpeed = 10;
+            _fallingSpeed = 1;
         }
 
-        private void InitializeCustomLoop()
+        private void DeleteAllCharacters()
         {
-            _loopTick = new Timer();
-            _loopTick.Tick += CustomLoop;
-            _loopTick.Start();
+            foreach (Character character in _characters)
+            {
+                Delete(character);
+            }
         }
 
-        private void CustomLoop(object sender, EventArgs e)
+        private void Delete(Character character)
         {
-            CharacterFalling();
+            Label characterModel = character.Model;
+            Controls.Remove(characterModel);
         }
 
         private void SpawnCharacter()
@@ -115,33 +160,63 @@ namespace KeyboardMaster
             _characters.Add(newCharacter);
         }
 
-        private void CharacterFalling()
+        private void GameLoopTick(object sender, EventArgs e)
+        {
+            _loopCounter++;
+            MoveCharactersDown();
+            AreCharactersOnBottom();
+            _isGameOver();
+
+            if (_passiveDifficultLevel.CanAddCharacter(_loopCounter))
+            {
+                SpawnCharacter();
+            }
+        }
+
+        private void MoveCharactersDown()
         {
             for (int i = 0; i < _characters.Count; i++)
             {
                 _characters[i].MoveDown(_fallingSpeed);
+            }
+        }
 
-                if (_characters[i].IsOnBottom(this))
+        private void AreCharactersOnBottom()
+        {
+            windowHeight = ClientRectangle.Height;
+            windowWidth = ClientRectangle.Width;
+
+            for (int i = 0; i < _characters.Count; i++)
+            {
+                if (_characters[i].IsOnBottom(windowHeight))
                 {
-                    _characters[i].Spawn(this);
+                    _characters[i].Spawn(windowWidth);
                     _player.RemoveChance();
+                    UpdateLabelPlayerChance();
+                }
+            }
+        }
 
-                    bool isGameOver = _player.IsTheEndOfChances();
-                    if (isGameOver)
-                    {
-                        CallGameOver();
-                    }
+        private void _isGameOver()
+        {
+            bool isGameOver = false;
+            for (int i = 0; i < _characters.Count; i++)
+            {
+                isGameOver = _player.IsTheEndOfChances();
+                if (isGameOver)
+                {
+                    CallGameOver();
                 }
             }
         }
 
         private void CallGameOver()
         {
-            _loopTick.Stop();
+            GameLoopTickStop();
 
             if (!DataBaseControler.Connected)
             {
-                GameOverOfflineMode.Instance.Show();
+                GameOverOfflineMode.Instance.Show(_player);
                 return;
             }
 

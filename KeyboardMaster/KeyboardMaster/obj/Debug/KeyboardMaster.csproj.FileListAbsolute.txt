@@ -1,12 +1,14 @@
-E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.exe.config
-E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.exe
-E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.pdb
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.csproj.AssemblyReference.cache
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.Game.resources
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.GameOver.resources
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.GameOverOfflineMode.resources
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.MainMenu.resources
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.Properties.Resources.resources
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.ScorePopup.resources
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.csproj.GenerateResource.cache
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.csproj.CoreCompileInputs.cache
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.exe.config
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.exe
+E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\bin\Debug\KeyboardMaster.pdb
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.exe
 E:\.net projects\KeyboardMaster\KeyboardMaster\KeyboardMaster\obj\Debug\KeyboardMaster.pdb

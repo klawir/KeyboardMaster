@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using KeyboardMaster.Sql;
 
 namespace KeyboardMaster
 {
@@ -75,7 +74,10 @@ namespace KeyboardMaster
             _connection = new SqlConnection(_connectionString);
             _connection.Open();
 
-            _querySql = "Select Player,Value from Scores";
+            _querySql = "Select Player,Value " +
+                "from Scores " +
+                "order by Value DESC";
+
             _sqlCommand = new SqlCommand(_querySql, _connection);
 
             SqlDataReader oReader;
@@ -95,7 +97,7 @@ namespace KeyboardMaster
 
                 _connection.Close();
             }
-
+            
             return playerData;
         }
 

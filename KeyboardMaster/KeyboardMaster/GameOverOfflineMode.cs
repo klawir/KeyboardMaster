@@ -23,6 +23,12 @@ namespace KeyboardMaster
             base.OnShown(e);
         }
 
+        public void Show(Player playerScores)
+        {
+            Show();
+            scoreValueLabel.Text = playerScores.GetScore().ToString();
+        }
+
         private void backToMainMenu_Click(object sender, EventArgs e)
         {
             Game.Instance.Hide();

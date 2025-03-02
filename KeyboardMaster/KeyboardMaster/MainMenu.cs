@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace KeyboardMaster
 {
@@ -17,7 +15,6 @@ namespace KeyboardMaster
             (ScreenUtility.GetHeight(this) / 2) - (ClientRectangle.Height / 2));
 
             DataBaseControler.Initialize();
-            Time.Initialize();
 
             ScorePopup scorePopup = new ScorePopup();
             scorePopup.Hide(); 

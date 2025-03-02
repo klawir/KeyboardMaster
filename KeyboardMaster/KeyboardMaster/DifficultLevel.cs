@@ -3,17 +3,17 @@ namespace KeyboardMaster
 {
     internal struct DifficultLevel
     {
-        private const int _EACH_X_POINT_SPAWNS_ADDITIONAL_CHARACTER = 10;
-        private const int _EACH_Y_POINT_INCREASES_FALLING_SPEED = 25;
+        private const int _TICK_AMOUNT_TO_SPAWNS_ADDITIONAL_CHARACTER = 500;
+        private const int _POINT_AMOUNT_TO_INCREASE_FALLING_SPEED = 50;
 
-        internal bool TryAddCharacter(int score)
+        internal bool CanAddCharacter(uint time)
         {
-            return score % _EACH_X_POINT_SPAWNS_ADDITIONAL_CHARACTER == 0;
+            return time % _TICK_AMOUNT_TO_SPAWNS_ADDITIONAL_CHARACTER == 0;
         }
 
-        internal bool TryIncreaseFallingSpeed(int score)
+        internal bool CanIncreaseFallingSpeed(int score)
         {
-            return score % _EACH_Y_POINT_INCREASES_FALLING_SPEED == 0;
+            return score % _POINT_AMOUNT_TO_INCREASE_FALLING_SPEED == 0;
         }
     }
 }

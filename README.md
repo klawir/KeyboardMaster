@@ -14,7 +14,10 @@
   - Game over
 * Scores and chances
 * Saving and showing scores
+  
 <br>
+
+![table](https://github.com/user-attachments/assets/3dd2b2c4-1653-4bf8-b305-ced8eb5c5590)
 
 Not connected to data base
 ![keyboard master not connacted to data base](https://github.com/user-attachments/assets/9c2dec1e-9dbb-4cab-b7a3-16ae0718bdf4)
